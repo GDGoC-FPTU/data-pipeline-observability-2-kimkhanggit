@@ -1,8 +1,8 @@
 # Experiment Report: Data Quality Impact on AI Agent
 
 **Student ID:** AI20K-XXXX
-**Name:** (Dien ten cua ban)
-**Date:** (Dien ngay thuc hien)
+**Name:** Phung Kim Khang
+**Date:** 10/06/2026
 
 ---
 
@@ -12,8 +12,8 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 | Scenario | Agent Response | Accuracy (1-10) | Notes |
 |----------|----------------|-----------------|-------|
-| Clean Data (`processed_data.csv`) | (Ghi cau tra loi cua Agent) | | |
-| Garbage Data (`garbage_data.csv`) | (Ghi cau tra loi cua Agent) | | |
+| Clean Data (`processed_data.csv`) | Agent: Based on my data, the best choice is Laptop at $1200.0. | 9 | Du lieu da duoc validate nen chi con product hop le, category dung va price la so duong. |
+| Garbage Data (`garbage_data.csv`) | Agent: Based on my data, the best choice is Nuclear Reactor at $999999. | 2 | Agent bi anh huong boi outlier va du lieu rac, nen goi y mot san pham khong hop ly. |
 
 ---
 
@@ -21,15 +21,12 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 ### Tai sao Agent tra loi sai khi dung Garbage Data?
 
-(Viet nhan xet cua ban o day — it nhat 50 tu)
-
-(Hay phan tich cac van de nhu Duplicate IDs, wrong data types, outliers, null values
-va giai thich tai sao chung anh huong den ket qua cua Agent.)
+Agent tra loi sai khi dung Garbage Data vi du lieu dau vao co nhieu van de chat luong. File garbage co duplicate ID, sai kieu du lieu o cot price, gia tri null va dac biet la outlier rat lon nhu Nuclear Reactor gia 999999 trong category electronics. Agent simulation chi loc theo category va chon record co price cao nhat, nen neu du lieu khong duoc validate thi no se xem outlier nay la lua chon tot nhat. Dieu nay cho thay prompt tot van khong du neu knowledge base bi nhiem du lieu rac. Pipeline can validation, type checking va outlier handling truoc khi dua du lieu cho agent.
 
 ---
 
 ## 3. Ket luan
 
-**Quality Data > Quality Prompt?** (Dong y hay khong? Giai thich ngan gon.)
+**Quality Data > Quality Prompt?** Dong y.
 
-(Viet ket luan cua ban o day)
+Chat luong du lieu anh huong truc tiep den cau tra loi cua agent. Neu data co loi, agent co the dua ra cau tra loi tu tin nhung sai. Vi vay ETL pipeline va data observability la buoc quan trong truoc khi xay dung ung dung AI.

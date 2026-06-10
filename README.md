@@ -1,14 +1,16 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=24112911&assignment_repo_type=AssignmentRepo)
 # Day 10 Lab: Data Pipeline & Data Observability
 
-**Student Email:** email@example.com
-**Name:** (Dien ten cua ban)
+**Student Email:** kimkhangwork@gmail.com
+**Name:** Phùng Kim Khang
 
 ---
 
 ## Mo ta
 
-(Mo ta ngan gon bai lab va nhung gi ban da lam)
+Day la bai lab Data Pipeline & Data Observability. Em da hoan thanh pipeline ETL trong `solution.py` gom 4 buoc: extract du lieu tu `raw_data.json`, validate de loai record loi, transform du lieu bang cach chuan hoa category va tinh discounted_price, sau do load ket qua ra `processed_data.csv`.
+
+Pipeline cung in log so record duoc extract, so record hop le, so record bi loai va so record da xu ly. Output co them cot `processed_at` de theo doi thoi diem du lieu duoc xu ly.
 
 ---
 
@@ -26,7 +28,8 @@ python solution.py
 
 ### Chay Agent Simulation (Stress Test)
 ```bash
-# Mo ta cach ban chay thi nghiem Clean vs Garbage data
+python generate_garbage.py
+python agent_simulation.py
 ```
 
 ---
@@ -44,4 +47,11 @@ python solution.py
 
 ## Ket qua
 
-(Tom tat ket qua: bao nhieu records da xu ly, bao nhieu bi loai, v.v.)
+Ket qua voi `raw_data.json`:
+
+- Extracted: 5 records
+- Valid: 3 records
+- Dropped/Errors: 2 records
+- Loaded: 3 records vao `processed_data.csv`
+
+Hai record bi loai vi co `price <= 0` hoac `category` rong. Cac record hop le duoc them `discounted_price = price * 0.9`, category duoc chuan hoa Title Case va them timestamp `processed_at`.
